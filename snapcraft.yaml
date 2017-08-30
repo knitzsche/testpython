@@ -1,0 +1,26 @@
+name: testpython
+version: '1'
+summary: test
+description: |
+  test some python
+grade: stable
+confinement: strict
+
+environment:
+  PYTHONPATH: $SNAP/lib/python3.5/site-packages/
+
+apps:
+  run:
+    command: bin/run.py
+
+parts:
+  main:
+    source: main
+    plugin: dump 
+    organize:
+      run.py: bin/run.py
+  jsonref:
+    plugin: python
+    python-version: python3
+    python-packages: [jsonref]
+    #source: http://github.com/gazpachoking/jsonref.git
